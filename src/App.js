@@ -1,12 +1,26 @@
 import "./App.css";
 
-import './pages/homepage/Homepage.scss'
+import "./pages/homepage/Homepage.scss";
 import Homepage from "./pages/homepage/Homepage";
+import { Route, Routes } from "react-router-dom";
 
-function App() {
+const HatsPage = (props) => {
+  console.log(props);
   return (
     <div>
-      <Homepage />
+      <h1>HATS PAGE {props.match.params.topicId}</h1>
+    </div>
+  );
+};
+function App(props) {
+    console.log(props);
+    return (
+    <div>
+      <Routes>
+        <Route path={"/"} Component={Homepage} />
+        <Route path={"/hats"} Component={HatsPage} />
+      </Routes>
+      {/*<Homepage />*/}
     </div>
   );
 }
