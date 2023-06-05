@@ -1,27 +1,22 @@
-import "./App.css";
 
-import "./pages/homepage/Homepage.scss";
-import Homepage from "./pages/homepage/Homepage";
-import { Route, Routes } from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
+import Navigation from "./routes/navigation/Navigation.component";
+import Homepage from "./routes/home/Homepage";
+import SignIn from "./routes/sign-in/SignIn.component";
 
-const HatsPage = (props) => {
-  console.log(props);
-  return (
-    <div>
-      <h1>HATS PAGE {props.match.params.topicId}</h1>
-    </div>
-  );
-};
+function Shop() {
+  return <h1>I am a shop</h1>;
+}
+
 function App(props) {
-    console.log(props);
-    return (
-    <div>
-      <Routes>
-        <Route path={"/"} Component={Homepage} />
-        <Route path={"/hats"} Component={HatsPage} />
-      </Routes>
-      {/*<Homepage />*/}
-    </div>
+  return (
+    <Routes>
+      <Route path={"/"} element={<Navigation />}>
+        <Route index element={<Homepage />} />
+        <Route path="Shop" element={<Shop />} />
+          <Route path={'sign-in'} element={<SignIn/>}/>
+      </Route>
+    </Routes>
   );
 }
 
