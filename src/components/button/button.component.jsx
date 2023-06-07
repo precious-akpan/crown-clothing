@@ -4,14 +4,14 @@ const BUTTON_TYPE_CLASSES = {
   inverted: "inverted",
 };
 
-const ButtonComponent = ({ children, buttonType, ...otherProps }) => {
+const Button = ({ children, buttonType, ...otherProps }) => {
   return (
     <button
-      className={`button-container ${BUTTON_TYPE_CLASSES[buttonType]}`}
+      className={`button-container ${BUTTON_TYPE_CLASSES[buttonType] ? BUTTON_TYPE_CLASSES[buttonType]:''}`}
       {...otherProps}
     >
       {children}
     </button>
   );
 };
-export default ButtonComponent;
+export default Button;
