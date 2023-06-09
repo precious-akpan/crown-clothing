@@ -1,22 +1,61 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
+const addCartItem = (cartItems, productToAdd) => {
+  const updatedProductToAdd = { ...productToAdd, quantity: 1 };
+  const foundIndex = cartItems.findIndex(
+    (carItem) => carItem.id === productToAdd.id
+  );
+  const updatedCartItems = [...cartItems];
+  if (foundIndex > -1) {
+    updatedCartItems[foundIndex].quantity++;
+  } else {
+    updatedCartItems.push(updatedProductToAdd);
+  }
+
+  return updatedCartItems;
+
+  // const existingItem = cartItems.find(
+  //   (cartItem) => cartItem.id === productToAdd.id
+  // );
+  //
+  // if (existingItem) {
+  //   return cartItems.map((cartItem) =>
+  //     cartItem.id === productToAdd.id
+  //       ? { ...cartItem, quantity: cartItem.quantity+1 }
+  //       : cartItem
+  //   );
+  // }
+  // return [...cartItems, { ...productToAdd, quantity: 1 }];
+};
 export const CartContext = createContext({
-  cart: [],
+  cartItems: [],
   showCart: false,
   setShowCart: () => {},
-  // addToCart: () => {},
+  addItemToCart: () => {},
+  cartCount: 0,
 });
 
 const CartProvider = ({ children }) => {
-  // const [cart, setCart] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
   const [showCart, setShowCart] = useState(false);
-  // const toggleShowCart = () => {
-  //   setShowCart(!showCart);
-  // };
-  // const addToCart = (product) => setCart([...cart, product]);
+  const [cartCount, setCartCount] = useState(0);
+
+
+  useEffect(() => {
+    setCartCount(
+      cartItems.reduce((total, cartItem) => total + cartItem.quantity, 0)
+    );
+  }, [cartItems]);
+  const addItemToCart = (product) => {
+    setCartItems(addCartItem(cartItems, product));
+  };
 
   const value = {
-    showCart, setShowCart
+    showCart,
+    setShowCart,
+    addItemToCart,
+    cartItems,
+      cartCount
   };
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };

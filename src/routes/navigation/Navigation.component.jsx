@@ -10,12 +10,9 @@ import { CartContext } from "../../contexts/cart.context";
 
 function Navigation() {
   const { currentUser } = useContext(UserContext);
-  const { toggleShowCart, showCart } = useContext(CartContext);
-  console.log(toggleShowCart);
-  console.log(showCart);
-const handleClick = () => {
-    toggleShowCart()
-}
+  const { showCart } = useContext(CartContext);
+  const {cartItems} = useContext(CartContext)
+  console.log(cartItems);
   return (
     <>
       <div className={"navigation"}>
@@ -40,7 +37,7 @@ const handleClick = () => {
           <CartIconComponent />
         </div>
       </div>
-      {showCart && <CartDropdownComponent />}
+      {showCart && <CartDropdownComponent cartItems={cartItems}/>}
       <Outlet />
     </>
   );

@@ -6,12 +6,11 @@ import './product-card.style.scss'
 const ShopComponent = () => {
   const { products } = useContext(ProductsContext);
 
-  console.log(products);
   return (
     <div className={'products-container'}>
       {products.map((product) => (
         <ProductCardComponent key={product.id} product={product} />
-      ))}{" "}
+      ))}
     </div>
   );
 };
