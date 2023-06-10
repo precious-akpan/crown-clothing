@@ -12,7 +12,6 @@ function Navigation() {
   const { currentUser } = useContext(UserContext);
   const { showCart } = useContext(CartContext);
   const {cartItems} = useContext(CartContext)
-  console.log(cartItems);
   return (
     <>
       <div className={"navigation"}>
