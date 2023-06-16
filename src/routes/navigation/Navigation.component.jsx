@@ -1,42 +1,39 @@
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { ReactComponent as CrownLogo } from "../../assets/crown.svg";
-import "./Navigation.styles.scss";
+import "./Navigation.styles";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/user.context";
 import { signOutUser } from "../../utils/firebase.utils";
 import CartIconComponent from "../../components/cart-icon/cart-icon.component";
 import CartDropdownComponent from "../../components/cart-dropdown/cart-dropdown.component";
 import { CartContext } from "../../contexts/cart.context";
+import { LogoContainer, Navigations, NavLink, NavLinks } from "./Navigation.styles";
 
 function Navigation() {
   const { currentUser } = useContext(UserContext);
   const { showCart } = useContext(CartContext);
-  const {cartItems} = useContext(CartContext)
+  const { cartItems } = useContext(CartContext);
   return (
     <>
-      <div className={"navigation"}>
+      <Navigations>
         <div>
-          <Link className={"logo-container"} to={"/"}>
+          <LogoContainer to={"/"}>
             <CrownLogo />
-          </Link>
+          </LogoContainer>
         </div>
-        <div className={"nav-links-container"}>
-          <Link className={"nav-link"} to={"/shop"}>
-            SHOP
-          </Link>
+        <NavLinks>
+          <NavLink to={"/shop"}>SHOP</NavLink>
           {currentUser ? (
-            <span className="nav-link" onClick={signOutUser}>
+            <NavLink as="span" className="nav-link" onClick={signOutUser}>
               SIGN OUT
-            </span>
+            </NavLink>
           ) : (
-            <Link className={"nav-link"} to={"/auth"}>
-              SIGN IN
-            </Link>
+            <NavLink to={"/auth"}>SIGN IN</NavLink>
           )}
           <CartIconComponent />
-        </div>
-      </div>
-      {showCart && <CartDropdownComponent cartItems={cartItems}/>}
+        </NavLinks>
+      </Navigations>
+      {showCart && <CartDropdownComponent cartItems={cartItems} />}
       <Outlet />
     </>
   );

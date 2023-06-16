@@ -1,17 +1,23 @@
-import "./cart-item.style.scss";
+import "./cart-item.style";
+import {
+    CartItemContainer,
+    CartItemImage,
+    ItemDetails,
+    ItemName, ItemPrice,
+} from "./cart-item.style";
 
 const CartItemComponent = ({ cartItem }) => {
   const { name, quantity, price, imageUrl } = cartItem;
   return (
-    <div className="cart-item-container">
-      <img src={imageUrl} alt={name} />
-      <div className={'item-details'}>
-        <span>{name}</span>
-        <span className={'price'}>
-          {quantity} X ₦{price*quantity}
-        </span>
-      </div>
-    </div>
+    <CartItemContainer>
+      <CartItemImage src={imageUrl} alt={name} />
+      <ItemDetails>
+        <ItemName as={"span"}>{name}</ItemName>
+        <ItemPrice as={"span"}>
+          {quantity} X ₦{price * quantity}
+        </ItemPrice>
+      </ItemDetails>
+    </CartItemContainer>
   );
 };
 

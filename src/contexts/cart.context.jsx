@@ -29,35 +29,36 @@ const addCartItem = (cartItems, productToAdd) => {
 };
 
 const removeCartItem = (cartItems, productToRemove, isClear = false) => {
-  const existingItem = cartItems.find(
-    (cartItem) => cartItem.id === productToRemove.id
-  );
-
-  if (isClear) {
-    console.log(isClear);
-    console.log(existingItem);
-    return cartItems.filter((cartItem) => cartItem.id !== productToRemove.id);
-  }
-  return existingItem.quantity > 1 && !isClear
-    ? cartItems.map((cartItem) =>
-        cartItem.id === productToRemove.id
-          ? { ...cartItem, quantity: --cartItem.quantity }
-          : cartItem
-      )
-    : cartItems.filter((cartItem) => cartItem.id !== productToRemove.id);
-
-  // const index = cartItems.findIndex(
+  // const existingItem = cartItems.find(
   //   (cartItem) => cartItem.id === productToRemove.id
   // );
+
+  if (isClear) {
+    return cartItems.filter((cartItem) => cartItem.id !== productToRemove.id);
+  }
+  // return existingItem.quantity > 1 && !isClear
+  //   ? cartItems.map((cartItem) =>
+  //       cartItem.id === productToRemove.id
+  //         ? { ...cartItem, quantity: --cartItem.quantity }
+  //         : cartItem
+  //     )
+  //   : cartItems.filter((cartItem) => cartItem.id !== productToRemove.id);
+
+  const index = cartItems.findIndex(
+    (cartItem) => cartItem.id === productToRemove.id
+  );
+  let updatedCartItems = Object.assign([], cartItems);
   // let updatedCartItems = [...cartItems];
-  // if (index > -1) {
-  //   if (updatedCartItems[index].quantity > 1) {
-  //     updatedCartItems[index].quantity--;
-  //   } else {
-  //     updatedCartItems = updatedCartItems.filter(cartItem=>cartItem.id!==productToRemove.id)
-  //   }
-  // } else return
-  // return updatedCartItems;
+  if (index > -1) {
+    if (updatedCartItems[index].quantity > 1) {
+      updatedCartItems[index].quantity--;
+    } else {
+      updatedCartItems = updatedCartItems.filter(
+        (cartItem) => cartItem.id !== productToRemove.id
+      );
+    }
+  } else return;
+  return updatedCartItems;
 };
 export const CartContext = createContext({
   cartItems: [],
@@ -83,7 +84,10 @@ const CartProvider = ({ children }) => {
 
   useEffect(() => {
     setCartTotalPrice(
-      cartItems.reduce((total, cartItem) => total + cartItem.price * cartItem.quantity, 0)
+      cartItems.reduce(
+        (total, cartItem) => total + cartItem.price * cartItem.quantity,
+        0
+      )
     );
   }, [cartItems]);
   const addItemToCart = (product) => {

@@ -1,11 +1,7 @@
-import CategoryItem from "../category-item/category-item";
-import './Directory.scss'
+import CategoryItemComponent from "../category-item/category-item.component";
+import {CategoriesContainer} from "./Directory.styles";
 
-// class Directory extends Component {
-//   constructor() {
-//     super();
-
-const Directory = () => {
+const DirectoryComponent = () => {
     const categories = [
         {
             title: "hats",
@@ -42,12 +38,12 @@ const Directory = () => {
     ];
 
     return (
-        <div className={"categories-container"}>
-            {categories.map(({title, id, imageUrl}) => (
-                <CategoryItem key={id} title={title} imageUrl={imageUrl}/>
+        <CategoriesContainer >
+            {categories.map(({title, id, linkUrl, imageUrl}) => (
+                <CategoryItemComponent key={id} title={title} linkUrl={linkUrl} imageUrl={imageUrl}/>
             ))}
-        </div>);
+        </CategoriesContainer>);
 }
 
 
-export default Directory;
+export default DirectoryComponent;
