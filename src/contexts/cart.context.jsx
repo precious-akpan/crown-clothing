@@ -63,7 +63,6 @@ const removeCartItem = (cartItems, productToRemove, isClear = false) => {
 export const CartContext = createContext({
   cartItems: [],
   showCart: false,
-  setShowCart: () => {},
   addItemToCart: () => {},
   removeItemFromCart: () => {},
   cartCount: 0,

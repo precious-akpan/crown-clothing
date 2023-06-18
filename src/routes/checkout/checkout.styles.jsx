@@ -28,21 +28,3 @@ export const CartTotal = styled.span`
   margin-left: auto;
   font-size: 36px;
 `;
-// .checkout-container {
-//
-//   .checkout-header {
-//
-//     .header-block {
-//       text-transform: capitalize;
-//       width: 23%;
-//
-//       &:last-child {
-//         width: 8%;
-//       }
-//     }
-//   }
-//
-//   .total {
-//
-//   }
-// }

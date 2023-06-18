@@ -3,11 +3,12 @@ import CheckoutItem from "../../components/checkout-item/checkout-item.component
 import { useContext } from "react";
 import { CartContext } from "../../contexts/cart.context";
 import {
+  CartTotal,
   CheckoutContainer,
   CheckoutHeader,
-  CartTotal,
   CheckoutHeaderBlock,
 } from "./checkout.styles";
+
 const CheckoutComponent = () => {
   const { cartItems, cartTotalPrice } = useContext(CartContext);
 

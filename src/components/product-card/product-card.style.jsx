@@ -1,10 +1,5 @@
 import styled from "styled-components";
-import { BUTTON_TYPE_CLASSES } from "../button/button.component";
-import {
-  BaseButton,
-  GoogleSignInButton,
-  InvertedButton,
-} from "../button/button.style";
+import {BaseButton, GoogleSignInButton, InvertedButton,} from "../button/button.style";
 
 export const Image = styled.img`
   width: 100%;
@@ -20,7 +15,7 @@ export const ProductCardContainer = styled.div`
   align-items: center;
   position: relative;
 
-  ${BaseButton},${GoogleSignInButton},${InvertedButton} {
+  ${BaseButton}, ${GoogleSignInButton}, ${InvertedButton} {
     width: 80%;
     opacity: 0.7;
     position: absolute;
@@ -33,7 +28,7 @@ export const ProductCardContainer = styled.div`
       opacity: 0.8;
     }
 
-    ${BaseButton},${GoogleSignInButton},${InvertedButton} {
+    ${BaseButton}, ${GoogleSignInButton}, ${InvertedButton} {
       opacity: 0.85;
       display: flex;
     }
