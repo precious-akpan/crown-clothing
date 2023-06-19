@@ -37,7 +37,7 @@ const CheckoutComponent = () => {
         {cartItems.map((cartItem) => (
           <CheckoutItem key={cartItem.id} product={cartItem} />
         ))}
-        <CartTotal>Total: {cartTotalPrice}</CartTotal>
+        <CartTotal>Total: ₦{cartTotalPrice}</CartTotal>
       </CheckoutContainer>
     );
   } else element = <span>Your cart is empty</span>;

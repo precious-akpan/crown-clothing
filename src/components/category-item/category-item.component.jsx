@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 
 const CategoryItemComponent = ({ title, imageUrl, linkUrl }) => {
   const navigate = useNavigate();
-    console.log(linkUrl);
     const handleNavigate = () => navigate(linkUrl);
   return (
     <CategoryItemContainer onClick={handleNavigate}>

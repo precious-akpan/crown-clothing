@@ -7,7 +7,8 @@ import {
 } from "./category-preview.styles";
 
 const CategoryPreviewComponent = ({ title, product }) => {
-  return (
+    console.log(title);
+    return (
     <CategoryPreviewContainer>
       <h2>
         <CategoryTitleLink to={title}>{title.toUpperCase()}</CategoryTitleLink>

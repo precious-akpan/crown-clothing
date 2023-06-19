@@ -22,7 +22,7 @@ const ProductCardComponent = ({ product }) => {
       <Image src={imageUrl} alt={name} />
       <ProductCardFooter className={"footer"}>
         <ProductName>{name}</ProductName>
-        <ProductPrice>${price}</ProductPrice>
+        <ProductPrice>₦{price}</ProductPrice>
       </ProductCardFooter>
       <Button
         buttonType={BUTTON_TYPE_CLASSES.inverted}
