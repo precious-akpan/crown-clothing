@@ -3,15 +3,12 @@ import { useContext } from "react";
 import { CartContext } from "../../contexts/cart.context";
 import { CartIconContainer, ItemCount, ShoppingIcon } from "./cart-icon.style";
 const CartIconComponent = () => {
-  const { showCart, setShowCart } = useContext(CartContext);
-  const { cartCount } = useContext(CartContext);
-  const toggleShowCart = () => setShowCart(!showCart);
+  const { showCart,setShowCart, cartCount } = useContext(CartContext);
+  const toggleShowCart = () => setShowCart((!showCart));
   return (
     <CartIconContainer onClick={toggleShowCart}>
       <ShoppingIcon />
-      <ItemCount as={"span"} >
-        {cartCount}
-      </ItemCount>
+      <ItemCount as={"span"}>{cartCount}</ItemCount>
     </CartIconContainer>
   );
 };
