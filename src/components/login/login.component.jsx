@@ -28,14 +28,16 @@ const LoginComponent = () => {
                 signInEmail,
                 signInPassword
             );
-            console.log(user);
 
             resetFormFields();
         } catch (e) {
             if (e.code === "auth/wrong-password") {
                 alert("Incorrect email or password");
             }
-            console.error(e.message);
+            if (e.code === 'auth/user-not-found') {
+                alert("No user with that username")
+            }
+            alert(e.message);
         }
     };
 
