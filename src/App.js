@@ -21,7 +21,7 @@ function App() {
       }
       dispatch(setCurrentUser(user));
     });
-  }, []);
+  }, [dispatch]);
 
   return (
     <Routes>
