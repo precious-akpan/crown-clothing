@@ -15,7 +15,7 @@ const ShopComponent = () => {
         }
 
         getCategoriesMap();
-    }, []);
+    }, [dispatch]);
 
     return (
         <>

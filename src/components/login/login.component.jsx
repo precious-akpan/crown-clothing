@@ -24,7 +24,7 @@ const LoginComponent = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const {user} = await signInWithEmailAndPasswordAuth(
+            await signInWithEmailAndPasswordAuth(
                 signInEmail,
                 signInPassword
             );

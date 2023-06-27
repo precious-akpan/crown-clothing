@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import "./checkout-item.styles";
 import {
   Arrow,
